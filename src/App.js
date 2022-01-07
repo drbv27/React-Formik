@@ -28,7 +28,12 @@ function App() {
     >
       <Form>
         <label>Nombre: </label>
-        <Field type="text" name="name" />
+        <Field type="text" name="name" className="input" />
+        <Field as="select" name="select" className="input">
+          <option value="Orion">Orion</option>
+          <option value="Tristan">Tristan</option>
+          <option value="Guido">Guido</option>
+        </Field>
         <ErrorMessage name="name" />
         <br />
         <label>Apellido: </label>
