@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Checkbox from "./components/Checkbox";
+import Radio from "./components/Radio";
 import TextInput from "./components/TextInput";
 import Select from "./components/Select";
 
@@ -15,6 +16,10 @@ const validate = (values) => {
   } else if (values.lastname.length < 5) {
     errors.lastname = "Requiere al menos 6 caracteres";
   }
+
+  if (!values.radio) {
+    errors.radio = "Requerido";
+  }
   return errors;
 };
 
@@ -26,6 +31,7 @@ function App() {
         lastname: "",
         email: "",
         mascota: "",
+        radio: "",
       }}
       validate={validate}
       onSubmit={(values) => console.log(values)}
@@ -44,6 +50,10 @@ function App() {
           <option value="Guido">Guido</option>
         </Select>
         <Checkbox name="accept">Aceptar terminos y condiciones</Checkbox>
+        <Radio name="radio" value="orion" label="Orion" />
+        <Radio name="radio" value="tristan" label="Tristan" />
+        <Radio name="radio" value="guido" label="Guido" />
+        <ErrorMessage name="radio" />
         <button type="submit">Enviar</button>
       </Form>
     </Formik>
